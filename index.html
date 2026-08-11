@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Easy Airport Taxi — luchthavenvervoer regio Eindhoven</title>
+<meta name="description" content="Taxi van en naar Schiphol, Eindhoven Airport, Brussel en Düsseldorf vanuit de regio Eindhoven. Persoonlijk, volledig gecertificeerd. Vraag direct een rit aan via WhatsApp.">
+<link rel="canonical" href="https://easyairporttaxi.nl/">
+<link rel="alternate" hreflang="nl" href="https://easyairporttaxi.nl/">
+<link rel="alternate" hreflang="en" href="https://easyairporttaxi.nl/en/">
+<link rel="alternate" hreflang="x-default" href="https://easyairporttaxi.nl/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Easy Airport Taxi — luchthavenvervoer regio Eindhoven">
+<meta property="og:description" content="Persoonlijk taxivervoer van en naar Schiphol, Eindhoven Airport, Brussel en Düsseldorf. Direct een rit aanvragen via WhatsApp.">
+<meta property="og:image" content="https://easyairporttaxi.nl/assets/og.png">
+<meta property="og:locale" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#23262B">
+
+<link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/serif-600.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+@font-face{font-family:'Inter';src:url('fonts/inter-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/inter-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter';src:url('fonts/inter-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'SourceSerif';src:url('fonts/serif-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+
+:root{
+  --antraciet:#23262B;
+  --leisteen:#565C63;
+  --staal:#2E6284;
+  --staal-donker:#22506E;
+  --staal-licht:#E3EBF0;
+  --mist:#F1F4F6;
+  --lijn:#DDE3E7;
+  --wit:#FFFFFF;
+  --maat:1120px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+body{
+  margin:0;background:var(--wit);color:var(--antraciet);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+h1,h2{font-family:'SourceSerif',Georgia,serif;font-weight:600;
+      letter-spacing:-0.015em;line-height:1.15;margin:0}
+h1{font-size:clamp(34px,5.2vw,54px)}
+h2{font-size:clamp(26px,3.4vw,36px)}
+h3{font-size:18px;font-weight:600;margin:0 0 6px;letter-spacing:-0.005em}
+p{margin:0 0 16px}
+a{color:var(--staal)}
+
+.maat{max-width:var(--maat);margin:0 auto;padding:0 clamp(20px,5vw,24px)}
+.band{padding:76px 0}
+.band-mist{background:var(--mist)}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+         color:var(--staal);font-weight:600;margin:0 0 12px}
+.dim{color:var(--leisteen)}
+.smal{max-width:60ch}
+
+/* ---------- kop ---------- */
+.kop{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--lijn);
+     background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px)}
+@supports not (backdrop-filter:blur(10px)){.kop{background:var(--wit)}}
+#top,#aanvraag{scroll-margin-top:88px}
+.kop-in{display:flex;align-items:center;justify-content:space-between;
+        gap:20px;padding-top:18px;padding-bottom:18px}
+.kop .logo{height:36px;width:auto;display:block}
+.kop-in>a{display:block;padding:5px 0}
+.kop-rechts{display:flex;align-items:center;gap:10px}
+.kop-acties{display:flex;align-items:center;gap:10px}
+.taal{display:inline-flex;align-items:center;gap:6px;flex:none;
+      font:500 14px/1 'Inter',sans-serif;color:var(--leisteen);
+      text-decoration:none;border:1px solid var(--lijn);border-radius:8px;
+      padding:11px 13px;transition:border-color .15s ease,color .15s ease}
+.taal:hover{border-color:var(--antraciet);color:var(--antraciet)}
+
+/* ---------- knoppen ---------- */
+.knop{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font:500 16px/1 'Inter',sans-serif;padding:15px 24px;border-radius:8px;
+  text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:background .15s ease,border-color .15s ease,color .15s ease}
+.knop svg{flex:none}
+.knop-vol{background:var(--staal);color:#fff}
+.knop-vol:hover{background:var(--staal-donker)}
+.knop-lijn{background:transparent;color:var(--antraciet);border-color:var(--lijn)}
+.knop-lijn:hover{border-color:var(--antraciet);background:var(--wit)}
+.knop-klein{padding:11px 18px;font-size:15px}
+.knop-breed{width:100%}
+a:focus-visible,button:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--staal);outline-offset:2px;border-radius:6px}
+
+/* ---------- hero ---------- */
+.hero{padding-top:80px;padding-bottom:64px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .85fr;gap:56px;align-items:center}
+.hero h1{margin-bottom:20px}
+.hero .intro{font-size:19px;color:var(--leisteen);margin-bottom:30px;max-width:46ch}
+.hero-knoppen{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.bellen{font-size:16px;color:var(--leisteen);margin:0}
+.bellen a{display:inline-block;font-weight:500;color:var(--antraciet);
+          text-decoration:underline;text-decoration-color:var(--lijn);
+          text-underline-offset:4px;padding:11px 6px;margin:-11px -6px}
+.bellen a:hover{text-decoration-color:var(--antraciet)}
+
+.kaart{background:var(--mist);border-radius:14px;padding:30px 30px 12px}
+.kaart ul{list-style:none;margin:0;padding:0}
+.kaart li{display:flex;gap:13px;padding:0 0 20px}
+.kaart li svg{flex:none;margin-top:3px;color:var(--staal)}
+.kaart b{display:block;font-weight:600;font-size:16px}
+.kaart span{font-size:14.5px;color:var(--leisteen);line-height:1.55}
+
+/* ---------- zakelijke balk ---------- */
+.zakelijk{background:var(--antraciet);color:#fff;padding:60px 0}
+.zakelijk-in{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.zakelijk h2{color:#fff}
+.zakelijk .eyebrow{color:#8FB9D2}
+.zakelijk p{color:#B4BCC3;margin:16px 0 0;max-width:44ch;font-size:16.5px}
+.zakelijk ul{list-style:none;margin:0;padding:0}
+.zakelijk li{display:flex;gap:13px;padding:0 0 17px;font-size:16px;color:#E2E7EB;
+             line-height:1.5}
+.zakelijk li:last-child{padding-bottom:0}
+.zakelijk li svg{flex:none;margin-top:3px;color:#8FB9D2}
+.zaklink{display:inline-block;margin-top:14px;padding:9px 4px;color:#8FB9D2;
+         font-weight:500;text-decoration:underline;text-decoration-color:#3F5D74;
+         text-underline-offset:5px}
+.zaklink:hover{text-decoration-color:#8FB9D2}
+
+/* ---------- diensten ---------- */
+.raster{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:16px}
+.vak{background:var(--wit);border:1px solid var(--lijn);border-radius:12px;
+     padding:26px 24px}
+.band-mist .vak{background:var(--wit)}
+.vak p{margin:0;font-size:15.5px;color:var(--leisteen);line-height:1.6}
+
+/* ---------- bestemmingen ---------- */
+.bestemmingen{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;padding:0;list-style:none}
+.bestemmingen li{background:var(--staal-licht);color:var(--staal-donker);
+  font-size:15px;font-weight:500;padding:9px 16px;border-radius:999px}
+
+/* ---------- formulier ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.veld{display:flex;flex-direction:column;gap:7px}
+.veld.vol{grid-column:1/-1}
+label{font-size:14.5px;font-weight:500}
+label .opt{font-weight:400;color:var(--leisteen)}
+input,select,textarea{
+  font:400 16px/1.5 'Inter',sans-serif;color:var(--antraciet);
+  background:var(--wit);border:1px solid var(--lijn);border-radius:8px;
+  padding:13px 14px;width:100%;transition:border-color .15s ease}
+input:hover,select:hover,textarea:hover{border-color:#BFC8CE}
+textarea{resize:vertical;min-height:88px}
+.fout input,.fout select,.fout textarea{border-color:#A8443C}
+.foutmelding{font-size:13.5px;color:#A8443C;display:none}
+.fout .foutmelding{display:block}
+.keuze{display:flex;align-items:flex-start;gap:11px;font-size:15.5px;
+       grid-column:1/-1;cursor:pointer;padding:6px 0 8px}
+.keuze input{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:var(--staal)}
+.form-slot{grid-column:1/-1;margin-top:6px}
+.form-noot{font-size:14px;color:var(--leisteen);margin:14px 0 0;text-align:center}
+.form-noot a{display:inline-block;padding:11px 6px;margin:-11px -6px;
+             text-underline-offset:4px}
+
+/* ---------- voettekst ---------- */
+.voet{background:var(--antraciet);color:#C6CDD3;padding:56px 0 40px;font-size:15px}
+.voet .logo-voet{height:40px;width:auto;display:block;margin-bottom:22px}
+.voet-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+.voet h3{font-size:14px;font-weight:600;color:#fff;margin:0 0 12px;
+         letter-spacing:.04em}
+.voet a{display:inline-block;color:#fff;text-decoration:underline;
+        text-decoration-color:#43494F;text-underline-offset:4px;padding:9px 0}
+.voet a:hover{text-decoration-color:#8FB9D2}
+.voet p{margin:0;line-height:1.7}
+.voet-onder{border-top:1px solid #383E44;margin-top:40px;padding-top:22px;
+            font-size:13.5px;color:#8A9299}
+
+/* ---------- mobiele actiebalk ---------- */
+.balk{display:none}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .zakelijk-in{grid-template-columns:1fr;gap:30px}
+  .zakelijk p{max-width:none}
+  .voet-grid{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:430px){
+  .kop .logo{height:30px}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .band{padding:56px 0}
+  .hero{padding-top:52px;padding-bottom:44px}
+  .form-grid{grid-template-columns:1fr}
+  .kop-acties{display:none}
+  .hero-knoppen{gap:10px}
+  .hero-knoppen .knop{flex:1 1 100%}
+  .kaart{padding:24px 22px 6px}
+  .balk{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
+    gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+    border-top:1px solid var(--lijn)}
+  .balk .knop{flex:1;padding:14px 10px}
+  body{padding-bottom:76px}
+}
+</style>
+</head>
+<body>
+
+<header class="kop">
+  <div class="maat kop-in">
+    <a href="#top" aria-label="Easy Airport Taxi, naar boven">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 347.4 54.0" role="img" aria-label="Easy Airport Taxi, Eindhoven"><title>Easy Airport Taxi</title><g transform="translate(-7.71,-3.86) scale(0.96)"><path d="M32 6 C19.85 6 10 15.85 10 28 C10 38 20 48 32 58 C44 48 54 38 54 28 C54 15.85 44.15 6 32 6 Z" fill="none" stroke="#23262B" stroke-width="4" stroke-linejoin="round"/><g transform="translate(32,27) scale(1.15)"><path d="M16,0 C16,-2.2 14,-3.6 11.5,-3.9 L2,-4.5 L-6,-13 L-10.5,-13 L-6,-5 L-12,-4.5 L-13.8,0 L-12,4.5 L-6,5 L-10.5,13 L-6,13 L2,4.5 L11.5,3.9 C14,3.6 16,2.2 16,0 Z" fill="#2E6284"/></g></g><g transform="translate(68.29,31.86)"><path d="M2.74 0V-24.74H18.31V-21.48H6.52V-14.11H17.46V-10.87H6.52V-3.25H18.41V0Z M28.29 0.42Q26.53 0.42 25.1 -0.24Q23.68 -0.9 22.85 -2.16Q22.02 -3.42 22.02 -5.25Q22.02 -6.82 22.62 -7.84Q23.23 -8.85 24.27 -9.45Q25.3 -10.04 26.57 -10.34Q27.84 -10.64 29.16 -10.79Q30.8 -10.99 31.83 -11.11Q32.86 -11.24 33.35 -11.53Q33.84 -11.82 33.84 -12.47V-12.57Q33.84 -13.61 33.44 -14.33Q33.04 -15.04 32.25 -15.43Q31.46 -15.82 30.28 -15.82Q29.07 -15.82 28.2 -15.45Q27.33 -15.07 26.79 -14.49Q26.25 -13.91 25.98 -13.28L22.55 -14.18Q23.18 -15.84 24.36 -16.85Q25.54 -17.86 27.06 -18.33Q28.59 -18.79 30.22 -18.79Q31.35 -18.79 32.61 -18.53Q33.87 -18.26 34.98 -17.56Q36.09 -16.87 36.79 -15.61Q37.49 -14.34 37.49 -12.32V0H33.95V-2.54H33.77Q33.41 -1.83 32.69 -1.15Q31.98 -0.46 30.89 -0.02Q29.8 0.42 28.29 0.42ZM29.11 -2.52Q30.6 -2.52 31.66 -3.1Q32.72 -3.69 33.29 -4.65Q33.85 -5.61 33.85 -6.69V-9.06Q33.65 -8.87 33.1 -8.71Q32.54 -8.55 31.83 -8.43Q31.11 -8.3 30.45 -8.22Q29.79 -8.13 29.35 -8.08Q28.33 -7.95 27.47 -7.64Q26.62 -7.32 26.11 -6.74Q25.6 -6.16 25.6 -5.2Q25.6 -4.32 26.06 -3.72Q26.52 -3.12 27.3 -2.82Q28.08 -2.52 29.11 -2.52Z M49.2 0.38Q47.19 0.38 45.62 -0.2Q44.05 -0.78 43.05 -1.92Q42.04 -3.05 41.71 -4.7L45.15 -5.41Q45.53 -3.97 46.57 -3.27Q47.62 -2.57 49.23 -2.57Q50.99 -2.57 52.04 -3.31Q53.08 -4.05 53.08 -5.08Q53.08 -5.98 52.44 -6.56Q51.8 -7.14 50.48 -7.42L47.35 -8.13Q44.76 -8.72 43.5 -9.99Q42.24 -11.27 42.24 -13.26Q42.24 -14.92 43.17 -16.17Q44.1 -17.42 45.71 -18.1Q47.32 -18.79 49.43 -18.79Q51.44 -18.79 52.87 -18.21Q54.29 -17.63 55.18 -16.58Q56.07 -15.54 56.45 -14.16L53.18 -13.45Q52.83 -14.43 51.97 -15.17Q51.11 -15.9 49.46 -15.9Q47.95 -15.9 46.94 -15.22Q45.93 -14.54 45.93 -13.5Q45.93 -12.57 46.6 -11.99Q47.27 -11.42 48.8 -11.07L51.79 -10.41Q54.36 -9.83 55.61 -8.58Q56.85 -7.34 56.85 -5.4Q56.85 -3.7 55.88 -2.4Q54.91 -1.1 53.19 -0.36Q51.47 0.38 49.2 0.38Z M60.74 6.67 61.63 3.7 62.05 3.8Q63 4.05 63.75 3.93Q64.51 3.82 65.06 3.23Q65.62 2.64 65.95 1.44L66.35 0.08L59.29 -18.56H63.24L66.91 -8.02Q67.53 -6.26 67.94 -4.52Q68.09 -3.83 68.26 -3.15Q68.44 -3.83 68.62 -4.53Q69.06 -6.28 69.67 -8.02L73.41 -18.56H77.32L69.25 2.57Q68.69 4.07 67.87 5.06Q67.05 6.06 65.92 6.57Q64.79 7.07 63.29 7.07Q62.43 7.07 61.75 6.95Q61.07 6.82 60.74 6.67Z M88.27 0 97.07 -24.74H101.72L110.68 0H106.58L104.31 -6.52H94.58L92.37 0ZM103.19 -9.68 101.77 -13.76Q101.2 -15.44 100.54 -17.71Q100.01 -19.47 99.38 -21.76Q98.75 -19.44 98.23 -17.66Q97.55 -15.36 97.04 -13.76L95.66 -9.68Z M114.12 0V-18.56H117.77V0ZM115.96 -21.4Q115.02 -21.4 114.35 -22.03Q113.67 -22.66 113.67 -23.56Q113.67 -24.47 114.35 -25.1Q115.02 -25.73 115.96 -25.73Q116.91 -25.73 117.59 -25.1Q118.27 -24.47 118.27 -23.56Q118.27 -22.66 117.59 -22.03Q116.91 -21.4 115.96 -21.4Z M122.82 0V-18.56H126.36V-15.57H126.56Q127.07 -17.1 128.35 -17.96Q129.63 -18.83 131.26 -18.83Q131.61 -18.83 132.05 -18.8Q132.5 -18.78 132.8 -18.73V-15.24Q132.6 -15.31 132.04 -15.37Q131.47 -15.44 130.89 -15.44Q129.63 -15.44 128.62 -14.91Q127.61 -14.38 127.04 -13.44Q126.48 -12.5 126.48 -11.27V0Z M136.11 6.94V-18.56H139.66V-15.54H139.96Q140.29 -16.12 140.88 -16.88Q141.47 -17.65 142.53 -18.22Q143.58 -18.79 145.32 -18.79Q147.55 -18.79 149.3 -17.66Q151.05 -16.54 152.06 -14.39Q153.08 -12.25 153.08 -9.23Q153.08 -6.24 152.08 -4.09Q151.08 -1.94 149.33 -0.79Q147.58 0.37 145.32 0.37Q143.65 0.37 142.57 -0.21Q141.5 -0.78 140.9 -1.54Q140.29 -2.31 139.96 -2.91H139.76V6.94ZM144.51 -2.74Q146.1 -2.74 147.18 -3.6Q148.26 -4.47 148.8 -5.94Q149.34 -7.42 149.34 -9.26Q149.34 -11.09 148.8 -12.54Q148.26 -14 147.19 -14.84Q146.12 -15.69 144.51 -15.69Q142.95 -15.69 141.87 -14.88Q140.79 -14.08 140.24 -12.64Q139.69 -11.21 139.69 -9.26Q139.69 -7.34 140.25 -5.87Q140.81 -4.4 141.89 -3.57Q142.96 -2.74 144.51 -2.74Z M165.06 0.38Q162.46 0.38 160.51 -0.81Q158.56 -2.01 157.48 -4.17Q156.4 -6.33 156.4 -9.18Q156.4 -12.07 157.48 -14.24Q158.56 -16.4 160.51 -17.6Q162.46 -18.79 165.06 -18.79Q167.69 -18.79 169.64 -17.6Q171.59 -16.4 172.67 -14.24Q173.75 -12.07 173.75 -9.18Q173.75 -6.33 172.67 -4.17Q171.59 -2.01 169.64 -0.81Q167.69 0.38 165.06 0.38ZM165.06 -2.71Q166.76 -2.71 167.86 -3.59Q168.97 -4.48 169.51 -5.95Q170.05 -7.42 170.05 -9.18Q170.05 -10.96 169.51 -12.44Q168.97 -13.93 167.86 -14.82Q166.76 -15.71 165.06 -15.71Q163.39 -15.71 162.29 -14.82Q161.2 -13.93 160.66 -12.45Q160.12 -10.97 160.12 -9.18Q160.12 -7.42 160.66 -5.95Q161.2 -4.48 162.29 -3.59Q163.39 -2.71 165.06 -2.71Z M177.93 0V-18.56H181.47V-15.57H181.67Q182.18 -17.1 183.46 -17.96Q184.74 -18.83 186.37 -18.83Q186.72 -18.83 187.16 -18.8Q187.61 -18.78 187.91 -18.73V-15.24Q187.71 -15.31 187.15 -15.37Q186.58 -15.44 186 -15.44Q184.74 -15.44 183.73 -14.91Q182.72 -14.38 182.15 -13.44Q181.59 -12.5 181.59 -11.27V0Z M199.15 -18.56V-15.59H195.45V-5.01Q195.45 -3.9 195.93 -3.38Q196.4 -2.86 197.48 -2.86Q197.76 -2.86 198.22 -2.92Q198.69 -2.99 199.02 -3.05L199.67 -0.13Q199.09 0.07 198.42 0.16Q197.76 0.25 197.11 0.25Q194.59 0.25 193.19 -1.05Q191.8 -2.36 191.8 -4.71V-15.59H189.09V-18.56H191.8V-22.98H195.45V-18.56Z M211.16 -21.48V-24.74H230.37V-21.48H222.68V0H218.88V-21.48Z M239.65 0.42Q237.9 0.42 236.47 -0.24Q235.04 -0.9 234.21 -2.16Q233.38 -3.42 233.38 -5.25Q233.38 -6.82 233.99 -7.84Q234.59 -8.85 235.63 -9.45Q236.67 -10.04 237.94 -10.34Q239.21 -10.64 240.52 -10.79Q242.16 -10.99 243.19 -11.11Q244.22 -11.24 244.71 -11.53Q245.2 -11.82 245.2 -12.47V-12.57Q245.2 -13.61 244.8 -14.33Q244.4 -15.04 243.61 -15.43Q242.83 -15.82 241.65 -15.82Q240.44 -15.82 239.56 -15.45Q238.69 -15.07 238.15 -14.49Q237.61 -13.91 237.35 -13.28L233.91 -14.18Q234.54 -15.84 235.72 -16.85Q236.9 -17.86 238.43 -18.33Q239.95 -18.79 241.58 -18.79Q242.71 -18.79 243.97 -18.53Q245.23 -18.26 246.35 -17.56Q247.46 -16.87 248.15 -15.61Q248.85 -14.34 248.85 -12.32V0H245.32V-2.54H245.13Q244.77 -1.83 244.05 -1.15Q243.34 -0.46 242.25 -0.02Q241.17 0.42 239.65 0.42ZM240.47 -2.52Q241.96 -2.52 243.03 -3.1Q244.09 -3.69 244.65 -4.65Q245.22 -5.61 245.22 -6.69V-9.06Q245.02 -8.87 244.46 -8.71Q243.9 -8.55 243.19 -8.43Q242.48 -8.3 241.81 -8.22Q241.15 -8.13 240.72 -8.08Q239.69 -7.95 238.83 -7.64Q237.98 -7.32 237.47 -6.74Q236.97 -6.16 236.97 -5.2Q236.97 -4.32 237.42 -3.72Q237.88 -3.12 238.66 -2.82Q239.44 -2.52 240.47 -2.52Z M252.39 0 258.73 -9.53 252.77 -18.56H256.89L258.98 -15.17Q259.85 -13.78 260.51 -12.5Q260.74 -12.02 261.01 -11.54Q261.24 -12.02 261.47 -12.5Q262.07 -13.78 262.97 -15.17L265.11 -18.56H269.16L263.12 -9.4L269.44 0H265.34L262.85 -3.95Q261.99 -5.33 261.34 -6.57Q261.11 -7.02 260.87 -7.45Q260.66 -7.02 260.44 -6.57Q259.85 -5.33 258.98 -3.95L256.46 0Z M272.98 0V-18.56H276.63V0ZM274.82 -21.4Q273.88 -21.4 273.2 -22.03Q272.53 -22.66 272.53 -23.56Q272.53 -24.47 273.2 -25.1Q273.88 -25.73 274.82 -25.73Q275.77 -25.73 276.45 -25.1Q277.13 -24.47 277.13 -23.56Q277.13 -22.66 276.45 -22.03Q275.77 -21.4 274.82 -21.4Z" fill="#23262B"/></g><g transform="translate(68.29,46.86)"><path d="M0.97 0V-8.04H5.87V-7.13H2V-4.51H5.61V-3.6H2V-0.91H5.92V0Z M10.74 -8.04V0H9.71V-8.04Z M14.78 0V-8.04H15.99L19.26 -2.9Q19.39 -2.7 19.57 -2.38Q19.75 -2.07 19.97 -1.68Q20.09 -1.46 20.2 -1.22Q20.18 -1.48 20.17 -1.73Q20.15 -2.15 20.14 -2.5Q20.14 -2.86 20.14 -3.11V-8.04H21.16V0H19.94L17.03 -4.58Q16.83 -4.89 16.63 -5.23Q16.43 -5.57 16.17 -6.03Q15.98 -6.36 15.73 -6.81Q15.75 -6.42 15.76 -6.06Q15.78 -5.56 15.8 -5.18Q15.81 -4.8 15.81 -4.59V0Z M27.71 0H25.2V-8.04H27.82Q28.99 -8.04 29.83 -7.56Q30.66 -7.08 31.1 -6.18Q31.55 -5.28 31.55 -4.04Q31.55 -2.78 31.1 -1.87Q30.65 -0.97 29.8 -0.49Q28.94 0 27.71 0ZM26.23 -0.91H27.65Q28.63 -0.91 29.28 -1.28Q29.92 -1.66 30.24 -2.36Q30.56 -3.06 30.56 -4.04Q30.56 -5 30.24 -5.69Q29.93 -6.39 29.3 -6.76Q28.68 -7.13 27.75 -7.13H26.23Z M35.28 0V-8.04H36.3V-4.56H40.52V-8.04H41.55V0H40.52V-3.66H36.3V0Z M48.85 0.11Q47.82 0.11 47.01 -0.39Q46.2 -0.89 45.74 -1.82Q45.28 -2.74 45.28 -4.01Q45.28 -5.29 45.74 -6.22Q46.2 -7.14 47.01 -7.65Q47.82 -8.15 48.85 -8.15Q49.88 -8.15 50.68 -7.65Q51.49 -7.14 51.95 -6.22Q52.41 -5.29 52.41 -4.01Q52.41 -2.74 51.95 -1.82Q51.49 -0.89 50.68 -0.39Q49.88 0.11 48.85 0.11ZM48.85 -0.84Q49.57 -0.84 50.15 -1.21Q50.73 -1.57 51.07 -2.28Q51.41 -2.99 51.41 -4.01Q51.41 -5.05 51.07 -5.76Q50.73 -6.47 50.15 -6.83Q49.57 -7.2 48.85 -7.2Q48.13 -7.2 47.54 -6.83Q46.96 -6.46 46.62 -5.75Q46.28 -5.04 46.28 -4.01Q46.28 -2.99 46.62 -2.28Q46.96 -1.58 47.54 -1.21Q48.13 -0.84 48.85 -0.84Z M58.4 0 55.45 -8.04H56.53L58.23 -3.27Q58.37 -2.86 58.59 -2.17Q58.77 -1.61 59 -0.83Q59.23 -1.63 59.41 -2.19Q59.62 -2.86 59.76 -3.27L61.42 -8.04H62.51L59.59 0Z M65.86 0V-8.04H70.76V-7.13H66.89V-4.51H70.5V-3.6H66.89V-0.91H70.81V0Z M74.6 0V-8.04H75.81L79.08 -2.9Q79.21 -2.7 79.39 -2.38Q79.58 -2.07 79.79 -1.68Q79.91 -1.46 80.03 -1.22Q80 -1.48 79.99 -1.73Q79.97 -2.15 79.97 -2.5Q79.96 -2.86 79.96 -3.11V-8.04H80.99V0H79.77L76.85 -4.58Q76.65 -4.89 76.45 -5.23Q76.25 -5.57 75.99 -6.03Q75.8 -6.36 75.55 -6.81Q75.57 -6.42 75.59 -6.06Q75.61 -5.56 75.62 -5.18Q75.63 -4.8 75.63 -4.59V0Z" fill="#2E6284"/></g></svg>
+    </a>
+    <div class="kop-rechts">
+      <a class="taal" href="en/" hreflang="en" lang="en" aria-label="Read this page in English"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/></svg> EN</a>
+      <div class="kop-acties">
+      <a class="knop knop-lijn knop-klein" href="tel:+31624242791"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 6 6l1.5-2 4.5 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg> Bellen</a>
+      <a class="knop knop-vol knop-klein" href="https://wa.me/31624242791" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81s-.39-.12-.56.12-.64.81-.79.98-.29.19-.54.06-1.05-.39-2-1.23c-.74-.66-1.24-1.47-1.38-1.72s-.02-.38.11-.5c.11-.11.25-.29.37-.44s.17-.25.25-.41.04-.31-.02-.44-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.66.31s-.87.85-.87 2.07.89 2.4 1.02 2.56 1.76 2.68 4.26 3.76c.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18s.21-1.08.15-1.18-.23-.19-.48-.31"/></svg>
+        WhatsApp
+      </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero maat">
+  <div class="hero-grid">
+    <div>
+      <h1>Van en naar de luchthaven, precies op tijd</h1>
+      <p class="intro">Persoonlijk taxivervoer in de regio Eindhoven.</p>
+      <div class="hero-knoppen">
+        <a class="knop knop-vol" href="https://wa.me/31624242791" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81s-.39-.12-.56.12-.64.81-.79.98-.29.19-.54.06-1.05-.39-2-1.23c-.74-.66-1.24-1.47-1.38-1.72s-.02-.38.11-.5c.11-.11.25-.29.37-.44s.17-.25.25-.41.04-.31-.02-.44-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.66.31s-.87.85-.87 2.07.89 2.4 1.02 2.56 1.76 2.68 4.26 3.76c.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18s.21-1.08.15-1.18-.23-.19-.48-.31"/></svg>
+          Stuur een WhatsApp
+        </a>
+        <a class="knop knop-lijn" href="#aanvraag">Ritaanvraag doen</a>
+      </div>
+      <p class="bellen">Liever bellen? <a href="tel:+31624242791">06 24 24 27 91</a></p>
+    </div>
+
+    <aside class="kaart">
+      <ul>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><b>Altijd ruim op tijd</b><span>Heenreis: ik houd rekening met spits en werkzaamheden. Terugreis: ik volg uw vlucht en pas de tijd aan bij vertraging.</span></div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.4-3.1 8.3-7.5 9.5-4.4-1.2-7.5-5.1-7.5-9.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div><b>Volledig gecertificeerd</b><span>Taxivergunning, chauffeurskaart en verzekering volgens de Nederlandse regelgeving.</span></div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+          <div><b>Eén vaste chauffeur</b><span>Geen centrale en geen wisselende gezichten. U weet vooraf wie er voor de deur staat.</span></div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17h16"/><path d="M6 17V9h9l4 4v4"/><circle cx="8.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/></svg>
+          <div><b>Ruime, verzorgde auto</b><span>Genoeg plek voor passagiers en bagage, ook bij een volle vakantiekoffer per persoon.</span></div>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="zakelijk">
+  <div class="maat zakelijk-in">
+    <div>
+      <p class="eyebrow">Zakelijk vervoer</p>
+      <h2>Eén vaste chauffeur voor uw bedrijf</h2>
+      <p>Voor directie, klanten en medewerkers. Naar Schiphol of Eindhoven Airport, naar een afspraak in het land of een beurs over de grens — elke keer met dezelfde chauffeur.</p>
+      <a class="zaklink" href="#aanvraag">Bespreek een vaste afspraak</a>
+    </div>
+    <ul>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Achteraf op factuur, per rit of per maand</li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Terugkerende ritten op vaste tijden</li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Discreet, stipt en verzorgd</li>
+      <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Rechtstreeks contact, geen centrale ertussen</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band band-mist">
+  <div class="maat">
+    <p class="eyebrow">Diensten</p>
+    <h2>Ritten die ik rijd</h2>
+    <p class="dim smal" style="margin-top:14px;margin-bottom:32px">Luchthavenvervoer en zakelijk vervoer zijn mijn dagelijkse werk, maar u kunt me ook voor de rest van uw vervoer bellen.</p>
+    <div class="raster">
+      <article class="vak">
+        <h3>Luchthavenvervoer</h3>
+        <p>Van en naar Schiphol, Eindhoven Airport, Brussel, Düsseldorf of Weeze. Heen ruim op tijd bij de vertrekhal, terug opgewacht in de aankomsthal — ik volg uw vlucht, dus vertraging is geen probleem.</p>
+      </article>
+      <article class="vak">
+        <h3>Zakelijk vervoer</h3>
+        <p>Van en naar Schiphol of Eindhoven Airport, of naar een afspraak in het land. Discreet, op tijd, en achteraf te factureren.</p>
+      </article>
+      <article class="vak">
+        <h3>Zorg- en contractvervoer</h3>
+        <p>Naar het ziekenhuis, een behandeling of een terugkerende afspraak. Rustig, met hulp bij het in- en uitstappen.</p>
+      </article>
+      <article class="vak">
+        <h3>Particulier vervoer</h3>
+        <p>Naar een station, een feest of een avond uit. Ook als u de auto liever laat staan en veilig thuis wilt komen.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="maat">
+    <p class="eyebrow">Werkgebied</p>
+    <h2>Regio Eindhoven en ver daarbuiten</h2>
+    <p class="dim smal" style="margin-top:14px">Ik haal op in Eindhoven en omliggende gemeenten — Veldhoven, Best, Geldrop, Nuenen, Helmond, Valkenswaard, Son en Breugel en alles daartussen. De bestemming mag verder liggen.</p>
+    <ul class="bestemmingen">
+      <li>Schiphol</li><li>Eindhoven Airport</li><li>Brussels Airport</li>
+      <li>Düsseldorf</li><li>Weeze</li><li>Rotterdam The Hague</li>
+      <li>Maastricht Aachen</li><li>Charleroi</li>
+    </ul>
+    <p class="dim" style="margin-top:26px;font-size:15.5px">Staat uw bestemming er niet bij? Vraag het gerust — ik rij ook naar havens, hotels en congreslocaties.</p>
+  </div>
+</section>
+
+<section class="band band-mist" id="aanvraag">
+  <div class="maat" style="max-width:760px">
+    <p class="eyebrow">Ritaanvraag</p>
+    <h2>Vraag een rit of een prijs aan</h2>
+    <p class="dim" style="margin-top:14px;margin-bottom:30px">Vul hieronder in wat u nodig heeft. Als u op versturen tikt opent WhatsApp met uw aanvraag er al netjes in — u hoeft alleen nog te verzenden. Ik reageer meestal binnen een uur met een vaste prijs.</p>
+
+    <form id="aanvraagform" novalidate>
+      <div class="form-grid">
+        <div class="veld vol">
+          <label for="f-naam">Uw naam</label>
+          <input id="f-naam" name="naam" type="text" autocomplete="name" placeholder="Voor- en achternaam">
+          <span class="foutmelding">Vul uw naam in.</span>
+        </div>
+
+        <div class="veld vol">
+          <label for="f-van">Ophaaladres</label>
+          <input id="f-van" name="van" type="text" autocomplete="street-address" placeholder="Straat en plaats, of de aankomsthal">
+          <span class="foutmelding">Vul in waar ik u ophaal.</span>
+        </div>
+
+        <div class="veld vol">
+          <label for="f-naar">Bestemming</label>
+          <input id="f-naar" name="naar" type="text" placeholder="Bijvoorbeeld Schiphol vertrekhal 3, of uw thuisadres">
+          <span class="foutmelding">Vul de bestemming in.</span>
+        </div>
+
+        <div class="veld">
+          <label for="f-datum">Datum</label>
+          <input id="f-datum" name="datum" type="date">
+          <span class="foutmelding">Kies een datum.</span>
+        </div>
+
+        <div class="veld">
+          <label for="f-tijd">Ophaaltijd</label>
+          <input id="f-tijd" name="tijd" type="time">
+          <span class="foutmelding">Kies een tijd.</span>
+        </div>
+
+        <div class="veld vol">
+          <label for="f-personen">Aantal personen</label>
+          <select id="f-personen" name="personen">
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option>
+            <option>7 of meer</option>
+          </select>
+        </div>
+
+        <label class="keuze" for="f-retour">
+          <input id="f-retour" name="retour" type="checkbox">
+          <span>Ik wil ook de terugreis regelen</span>
+        </label>
+
+        <div class="veld vol">
+          <label for="f-opmerking">Opmerking <span class="opt">— optioneel</span></label>
+          <textarea id="f-opmerking" name="opmerking" placeholder="Vluchtnummer, kinderzitje, rolstoel, huisdier — alles wat handig is om te weten"></textarea>
+        </div>
+
+        <div class="form-slot">
+          <button class="knop knop-vol knop-breed" type="submit">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.24 8.24c0 4.54-3.7 8.23-8.24 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81s-.39-.12-.56.12-.64.81-.79.98-.29.19-.54.06-1.05-.39-2-1.23c-.74-.66-1.24-1.47-1.38-1.72s-.02-.38.11-.5c.11-.11.25-.29.37-.44s.17-.25.25-.41.04-.31-.02-.44-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.66.31s-.87.85-.87 2.07.89 2.4 1.02 2.56 1.76 2.68 4.26 3.76c.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18s.21-1.08.15-1.18-.23-.19-.48-.31"/></svg>
+            Aanvraag openen in WhatsApp
+          </button>
+          <p class="form-noot">Geen WhatsApp? <a href="tel:+31624242791">Bel 06 24 24 27 91</a> — de gegevens worden alleen naar mij verstuurd en nergens opgeslagen.</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="voet">
+  <div class="maat">
+    <div class="voet-grid">
+      <div>
+        <svg class="logo logo-voet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 347.4 54.0" role="img" aria-label="Easy Airport Taxi, Eindhoven"><title>Easy Airport Taxi</title><g transform="translate(-7.71,-3.86) scale(0.96)"><path d="M32 6 C19.85 6 10 15.85 10 28 C10 38 20 48 32 58 C44 48 54 38 54 28 C54 15.85 44.15 6 32 6 Z" fill="none" stroke="#F1F4F6" stroke-width="4" stroke-linejoin="round"/><g transform="translate(32,27) scale(1.15)"><path d="M16,0 C16,-2.2 14,-3.6 11.5,-3.9 L2,-4.5 L-6,-13 L-10.5,-13 L-6,-5 L-12,-4.5 L-13.8,0 L-12,4.5 L-6,5 L-10.5,13 L-6,13 L2,4.5 L11.5,3.9 C14,3.6 16,2.2 16,0 Z" fill="#8FB9D2"/></g></g><g transform="translate(68.29,31.86)"><path d="M2.74 0V-24.74H18.31V-21.48H6.52V-14.11H17.46V-10.87H6.52V-3.25H18.41V0Z M28.29 0.42Q26.53 0.42 25.1 -0.24Q23.68 -0.9 22.85 -2.16Q22.02 -3.42 22.02 -5.25Q22.02 -6.82 22.62 -7.84Q23.23 -8.85 24.27 -9.45Q25.3 -10.04 26.57 -10.34Q27.84 -10.64 29.16 -10.79Q30.8 -10.99 31.83 -11.11Q32.86 -11.24 33.35 -11.53Q33.84 -11.82 33.84 -12.47V-12.57Q33.84 -13.61 33.44 -14.33Q33.04 -15.04 32.25 -15.43Q31.46 -15.82 30.28 -15.82Q29.07 -15.82 28.2 -15.45Q27.33 -15.07 26.79 -14.49Q26.25 -13.91 25.98 -13.28L22.55 -14.18Q23.18 -15.84 24.36 -16.85Q25.54 -17.86 27.06 -18.33Q28.59 -18.79 30.22 -18.79Q31.35 -18.79 32.61 -18.53Q33.87 -18.26 34.98 -17.56Q36.09 -16.87 36.79 -15.61Q37.49 -14.34 37.49 -12.32V0H33.95V-2.54H33.77Q33.41 -1.83 32.69 -1.15Q31.98 -0.46 30.89 -0.02Q29.8 0.42 28.29 0.42ZM29.11 -2.52Q30.6 -2.52 31.66 -3.1Q32.72 -3.69 33.29 -4.65Q33.85 -5.61 33.85 -6.69V-9.06Q33.65 -8.87 33.1 -8.71Q32.54 -8.55 31.83 -8.43Q31.11 -8.3 30.45 -8.22Q29.79 -8.13 29.35 -8.08Q28.33 -7.95 27.47 -7.64Q26.62 -7.32 26.11 -6.74Q25.6 -6.16 25.6 -5.2Q25.6 -4.32 26.06 -3.72Q26.52 -3.12 27.3 -2.82Q28.08 -2.52 29.11 -2.52Z M49.2 0.38Q47.19 0.38 45.62 -0.2Q44.05 -0.78 43.05 -1.92Q42.04 -3.05 41.71 -4.7L45.15 -5.41Q45.53 -3.97 46.57 -3.27Q47.62 -2.57 49.23 -2.57Q50.99 -2.57 52.04 -3.31Q53.08 -4.05 53.08 -5.08Q53.08 -5.98 52.44 -6.56Q51.8 -7.14 50.48 -7.42L47.35 -8.13Q44.76 -8.72 43.5 -9.99Q42.24 -11.27 42.24 -13.26Q42.24 -14.92 43.17 -16.17Q44.1 -17.42 45.71 -18.1Q47.32 -18.79 49.43 -18.79Q51.44 -18.79 52.87 -18.21Q54.29 -17.63 55.18 -16.58Q56.07 -15.54 56.45 -14.16L53.18 -13.45Q52.83 -14.43 51.97 -15.17Q51.11 -15.9 49.46 -15.9Q47.95 -15.9 46.94 -15.22Q45.93 -14.54 45.93 -13.5Q45.93 -12.57 46.6 -11.99Q47.27 -11.42 48.8 -11.07L51.79 -10.41Q54.36 -9.83 55.61 -8.58Q56.85 -7.34 56.85 -5.4Q56.85 -3.7 55.88 -2.4Q54.91 -1.1 53.19 -0.36Q51.47 0.38 49.2 0.38Z M60.74 6.67 61.63 3.7 62.05 3.8Q63 4.05 63.75 3.93Q64.51 3.82 65.06 3.23Q65.62 2.64 65.95 1.44L66.35 0.08L59.29 -18.56H63.24L66.91 -8.02Q67.53 -6.26 67.94 -4.52Q68.09 -3.83 68.26 -3.15Q68.44 -3.83 68.62 -4.53Q69.06 -6.28 69.67 -8.02L73.41 -18.56H77.32L69.25 2.57Q68.69 4.07 67.87 5.06Q67.05 6.06 65.92 6.57Q64.79 7.07 63.29 7.07Q62.43 7.07 61.75 6.95Q61.07 6.82 60.74 6.67Z M88.27 0 97.07 -24.74H101.72L110.68 0H106.58L104.31 -6.52H94.58L92.37 0ZM103.19 -9.68 101.77 -13.76Q101.2 -15.44 100.54 -17.71Q100.01 -19.47 99.38 -21.76Q98.75 -19.44 98.23 -17.66Q97.55 -15.36 97.04 -13.76L95.66 -9.68Z M114.12 0V-18.56H117.77V0ZM115.96 -21.4Q115.02 -21.4 114.35 -22.03Q113.67 -22.66 113.67 -23.56Q113.67 -24.47 114.35 -25.1Q115.02 -25.73 115.96 -25.73Q116.91 -25.73 117.59 -25.1Q118.27 -24.47 118.27 -23.56Q118.27 -22.66 117.59 -22.03Q116.91 -21.4 115.96 -21.4Z M122.82 0V-18.56H126.36V-15.57H126.56Q127.07 -17.1 128.35 -17.96Q129.63 -18.83 131.26 -18.83Q131.61 -18.83 132.05 -18.8Q132.5 -18.78 132.8 -18.73V-15.24Q132.6 -15.31 132.04 -15.37Q131.47 -15.44 130.89 -15.44Q129.63 -15.44 128.62 -14.91Q127.61 -14.38 127.04 -13.44Q126.48 -12.5 126.48 -11.27V0Z M136.11 6.94V-18.56H139.66V-15.54H139.96Q140.29 -16.12 140.88 -16.88Q141.47 -17.65 142.53 -18.22Q143.58 -18.79 145.32 -18.79Q147.55 -18.79 149.3 -17.66Q151.05 -16.54 152.06 -14.39Q153.08 -12.25 153.08 -9.23Q153.08 -6.24 152.08 -4.09Q151.08 -1.94 149.33 -0.79Q147.58 0.37 145.32 0.37Q143.65 0.37 142.57 -0.21Q141.5 -0.78 140.9 -1.54Q140.29 -2.31 139.96 -2.91H139.76V6.94ZM144.51 -2.74Q146.1 -2.74 147.18 -3.6Q148.26 -4.47 148.8 -5.94Q149.34 -7.42 149.34 -9.26Q149.34 -11.09 148.8 -12.54Q148.26 -14 147.19 -14.84Q146.12 -15.69 144.51 -15.69Q142.95 -15.69 141.87 -14.88Q140.79 -14.08 140.24 -12.64Q139.69 -11.21 139.69 -9.26Q139.69 -7.34 140.25 -5.87Q140.81 -4.4 141.89 -3.57Q142.96 -2.74 144.51 -2.74Z M165.06 0.38Q162.46 0.38 160.51 -0.81Q158.56 -2.01 157.48 -4.17Q156.4 -6.33 156.4 -9.18Q156.4 -12.07 157.48 -14.24Q158.56 -16.4 160.51 -17.6Q162.46 -18.79 165.06 -18.79Q167.69 -18.79 169.64 -17.6Q171.59 -16.4 172.67 -14.24Q173.75 -12.07 173.75 -9.18Q173.75 -6.33 172.67 -4.17Q171.59 -2.01 169.64 -0.81Q167.69 0.38 165.06 0.38ZM165.06 -2.71Q166.76 -2.71 167.86 -3.59Q168.97 -4.48 169.51 -5.95Q170.05 -7.42 170.05 -9.18Q170.05 -10.96 169.51 -12.44Q168.97 -13.93 167.86 -14.82Q166.76 -15.71 165.06 -15.71Q163.39 -15.71 162.29 -14.82Q161.2 -13.93 160.66 -12.45Q160.12 -10.97 160.12 -9.18Q160.12 -7.42 160.66 -5.95Q161.2 -4.48 162.29 -3.59Q163.39 -2.71 165.06 -2.71Z M177.93 0V-18.56H181.47V-15.57H181.67Q182.18 -17.1 183.46 -17.96Q184.74 -18.83 186.37 -18.83Q186.72 -18.83 187.16 -18.8Q187.61 -18.78 187.91 -18.73V-15.24Q187.71 -15.31 187.15 -15.37Q186.58 -15.44 186 -15.44Q184.74 -15.44 183.73 -14.91Q182.72 -14.38 182.15 -13.44Q181.59 -12.5 181.59 -11.27V0Z M199.15 -18.56V-15.59H195.45V-5.01Q195.45 -3.9 195.93 -3.38Q196.4 -2.86 197.48 -2.86Q197.76 -2.86 198.22 -2.92Q198.69 -2.99 199.02 -3.05L199.67 -0.13Q199.09 0.07 198.42 0.16Q197.76 0.25 197.11 0.25Q194.59 0.25 193.19 -1.05Q191.8 -2.36 191.8 -4.71V-15.59H189.09V-18.56H191.8V-22.98H195.45V-18.56Z M211.16 -21.48V-24.74H230.37V-21.48H222.68V0H218.88V-21.48Z M239.65 0.42Q237.9 0.42 236.47 -0.24Q235.04 -0.9 234.21 -2.16Q233.38 -3.42 233.38 -5.25Q233.38 -6.82 233.99 -7.84Q234.59 -8.85 235.63 -9.45Q236.67 -10.04 237.94 -10.34Q239.21 -10.64 240.52 -10.79Q242.16 -10.99 243.19 -11.11Q244.22 -11.24 244.71 -11.53Q245.2 -11.82 245.2 -12.47V-12.57Q245.2 -13.61 244.8 -14.33Q244.4 -15.04 243.61 -15.43Q242.83 -15.82 241.65 -15.82Q240.44 -15.82 239.56 -15.45Q238.69 -15.07 238.15 -14.49Q237.61 -13.91 237.35 -13.28L233.91 -14.18Q234.54 -15.84 235.72 -16.85Q236.9 -17.86 238.43 -18.33Q239.95 -18.79 241.58 -18.79Q242.71 -18.79 243.97 -18.53Q245.23 -18.26 246.35 -17.56Q247.46 -16.87 248.15 -15.61Q248.85 -14.34 248.85 -12.32V0H245.32V-2.54H245.13Q244.77 -1.83 244.05 -1.15Q243.34 -0.46 242.25 -0.02Q241.17 0.42 239.65 0.42ZM240.47 -2.52Q241.96 -2.52 243.03 -3.1Q244.09 -3.69 244.65 -4.65Q245.22 -5.61 245.22 -6.69V-9.06Q245.02 -8.87 244.46 -8.71Q243.9 -8.55 243.19 -8.43Q242.48 -8.3 241.81 -8.22Q241.15 -8.13 240.72 -8.08Q239.69 -7.95 238.83 -7.64Q237.98 -7.32 237.47 -6.74Q236.97 -6.16 236.97 -5.2Q236.97 -4.32 237.42 -3.72Q237.88 -3.12 238.66 -2.82Q239.44 -2.52 240.47 -2.52Z M252.39 0 258.73 -9.53 252.77 -18.56H256.89L258.98 -15.17Q259.85 -13.78 260.51 -12.5Q260.74 -12.02 261.01 -11.54Q261.24 -12.02 261.47 -12.5Q262.07 -13.78 262.97 -15.17L265.11 -18.56H269.16L263.12 -9.4L269.44 0H265.34L262.85 -3.95Q261.99 -5.33 261.34 -6.57Q261.11 -7.02 260.87 -7.45Q260.66 -7.02 260.44 -6.57Q259.85 -5.33 258.98 -3.95L256.46 0Z M272.98 0V-18.56H276.63V0ZM274.82 -21.4Q273.88 -21.4 273.2 -22.03Q272.53 -22.66 272.53 -23.56Q272.53 -24.47 273.2 -25.1Q273.88 -25.73 274.82 -25.73Q275.77 -25.73 276.45 -25.1Q277.13 -24.47 277.13 -23.56Q277.13 -22.66 276.45 -22.03Q275.77 -21.4 274.82 -21.4Z" fill="#F1F4F6"/></g><g transform="translate(68.29,46.86)"><path d="M0.97 0V-8.04H5.87V-7.13H2V-4.51H5.61V-3.6H2V-0.91H5.92V0Z M10.74 -8.04V0H9.71V-8.04Z M14.78 0V-8.04H15.99L19.26 -2.9Q19.39 -2.7 19.57 -2.38Q19.75 -2.07 19.97 -1.68Q20.09 -1.46 20.2 -1.22Q20.18 -1.48 20.17 -1.73Q20.15 -2.15 20.14 -2.5Q20.14 -2.86 20.14 -3.11V-8.04H21.16V0H19.94L17.03 -4.58Q16.83 -4.89 16.63 -5.23Q16.43 -5.57 16.17 -6.03Q15.98 -6.36 15.73 -6.81Q15.75 -6.42 15.76 -6.06Q15.78 -5.56 15.8 -5.18Q15.81 -4.8 15.81 -4.59V0Z M27.71 0H25.2V-8.04H27.82Q28.99 -8.04 29.83 -7.56Q30.66 -7.08 31.1 -6.18Q31.55 -5.28 31.55 -4.04Q31.55 -2.78 31.1 -1.87Q30.65 -0.97 29.8 -0.49Q28.94 0 27.71 0ZM26.23 -0.91H27.65Q28.63 -0.91 29.28 -1.28Q29.92 -1.66 30.24 -2.36Q30.56 -3.06 30.56 -4.04Q30.56 -5 30.24 -5.69Q29.93 -6.39 29.3 -6.76Q28.68 -7.13 27.75 -7.13H26.23Z M35.28 0V-8.04H36.3V-4.56H40.52V-8.04H41.55V0H40.52V-3.66H36.3V0Z M48.85 0.11Q47.82 0.11 47.01 -0.39Q46.2 -0.89 45.74 -1.82Q45.28 -2.74 45.28 -4.01Q45.28 -5.29 45.74 -6.22Q46.2 -7.14 47.01 -7.65Q47.82 -8.15 48.85 -8.15Q49.88 -8.15 50.68 -7.65Q51.49 -7.14 51.95 -6.22Q52.41 -5.29 52.41 -4.01Q52.41 -2.74 51.95 -1.82Q51.49 -0.89 50.68 -0.39Q49.88 0.11 48.85 0.11ZM48.85 -0.84Q49.57 -0.84 50.15 -1.21Q50.73 -1.57 51.07 -2.28Q51.41 -2.99 51.41 -4.01Q51.41 -5.05 51.07 -5.76Q50.73 -6.47 50.15 -6.83Q49.57 -7.2 48.85 -7.2Q48.13 -7.2 47.54 -6.83Q46.96 -6.46 46.62 -5.75Q46.28 -5.04 46.28 -4.01Q46.28 -2.99 46.62 -2.28Q46.96 -1.58 47.54 -1.21Q48.13 -0.84 48.85 -0.84Z M58.4 0 55.45 -8.04H56.53L58.23 -3.27Q58.37 -2.86 58.59 -2.17Q58.77 -1.61 59 -0.83Q59.23 -1.63 59.41 -2.19Q59.62 -2.86 59.76 -3.27L61.42 -8.04H62.51L59.59 0Z M65.86 0V-8.04H70.76V-7.13H66.89V-4.51H70.5V-3.6H66.89V-0.91H70.81V0Z M74.6 0V-8.04H75.81L79.08 -2.9Q79.21 -2.7 79.39 -2.38Q79.58 -2.07 79.79 -1.68Q79.91 -1.46 80.03 -1.22Q80 -1.48 79.99 -1.73Q79.97 -2.15 79.97 -2.5Q79.96 -2.86 79.96 -3.11V-8.04H80.99V0H79.77L76.85 -4.58Q76.65 -4.89 76.45 -5.23Q76.25 -5.57 75.99 -6.03Q75.8 -6.36 75.55 -6.81Q75.57 -6.42 75.59 -6.06Q75.61 -5.56 75.62 -5.18Q75.63 -4.8 75.63 -4.59V0Z" fill="#8FB9D2"/></g></svg>
+        <p>Persoonlijk vervoer van en naar de luchthaven, vanuit de regio Eindhoven. Al zestien jaar, volledig gecertificeerd.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="tel:+31624242791">06 24 24 27 91</a></p>
+        <p><a href="https://wa.me/31624242791" target="_blank" rel="noopener">WhatsApp</a></p>
+        <p><a href="#aanvraag">Ritaanvraag</a></p>
+      </div>
+      <div>
+        <h3>Gegevens</h3>
+        <p>KvK 69310041</p>
+        <p>Taxivergunning aanwezig</p>
+      </div>
+    </div>
+    <div class="voet-onder">
+      <span>© <span id="jaar">2026</span> Easy Airport Taxi — Eindhoven</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="balk" aria-label="Snel contact">
+  <a class="knop knop-lijn" href="tel:+31624242791">Bellen</a>
+  <a class="knop knop-vol" href="https://wa.me/31624242791" target="_blank" rel="noopener">WhatsApp</a>
+</nav>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"TaxiService",
+  "name":"Easy Airport Taxi",
+  "description":"Persoonlijk taxivervoer van en naar de luchthaven, vanuit de regio Eindhoven.",
+  "telephone":"+31624242791",
+  "url":"https://easyairporttaxi.nl/",
+  "areaServed":[
+    {"@type":"City","name":"Eindhoven"},
+    {"@type":"City","name":"Veldhoven"},
+    {"@type":"City","name":"Best"},
+    {"@type":"City","name":"Geldrop"},
+    {"@type":"City","name":"Nuenen"},
+    {"@type":"City","name":"Helmond"},
+    {"@type":"City","name":"Valkenswaard"}
+  ],
+  "provider":{
+    "@type":"LocalBusiness",
+    "name":"Easy Airport Taxi",
+    "telephone":"+31624242791",
+    "address":{"@type":"PostalAddress","addressLocality":"Eindhoven","addressRegion":"Noord-Brabant","addressCountry":"NL"}
+  }
+}
+</script>
+
+<script>
+(function () {
+  var NUMMER = '31624242791';
+  var form = document.getElementById('aanvraagform');
+  var verplicht = ['f-naam', 'f-van', 'f-naar', 'f-datum', 'f-tijd'];
+
+  document.getElementById('jaar').textContent = new Date().getFullYear();
+
+  var datum = document.getElementById('f-datum');
+  datum.min = new Date().toISOString().slice(0, 10);
+
+  function waarde(id) {
+    var el = document.getElementById(id);
+    return el ? String(el.value || '').trim() : '';
+  }
+
+  function toonFout(id, fout) {
+    var veld = document.getElementById(id).closest('.veld');
+    if (veld) veld.classList.toggle('fout', fout);
+  }
+
+  verplicht.forEach(function (id) {
+    document.getElementById(id).addEventListener('input', function () {
+      toonFout(id, false);
+    });
+  });
+
+  function nlDatum(iso) {
+    if (!iso) return '';
+    var d = iso.split('-');
+    if (d.length !== 3) return iso;
+    return d[2] + '-' + d[1] + '-' + d[0];
+  }
+
+  function bericht() {
+    var r = [];
+    r.push('Ritaanvraag via de website');
+    r.push('');
+    r.push('Naam: ' + waarde('f-naam'));
+    r.push('Ophalen: ' + waarde('f-van'));
+    r.push('Bestemming: ' + waarde('f-naar'));
+    r.push('Datum: ' + nlDatum(waarde('f-datum')) + ' om ' + waarde('f-tijd') + ' uur');
+    r.push('Personen: ' + waarde('f-personen'));
+    r.push('Retour gewenst: ' +
+      (document.getElementById('f-retour').checked ? 'ja' : 'nee'));
+
+    var opm = waarde('f-opmerking');
+    if (opm) {
+      r.push('');
+      r.push('Opmerking: ' + opm);
+    }
+    return r.join('\n');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var eerste = null;
+    verplicht.forEach(function (id) {
+      var leeg = waarde(id) === '';
+      toonFout(id, leeg);
+      if (leeg && !eerste) eerste = id;
+    });
+
+    if (eerste) {
+      var el = document.getElementById(eerste);
+      el.focus();
+      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+
+    var url = 'https://wa.me/' + NUMMER + '?text=' +
+      encodeURIComponent(bericht());
+    window.open(url, '_blank', 'noopener');
+  });
+})();
+</script>
+
+</body>
+</html>
